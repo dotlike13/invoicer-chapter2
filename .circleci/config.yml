@@ -14,11 +14,7 @@ jobs:
       name: Setup environment
       command: |
        gb="/src/github.com/${CIRCLE_PROJECT_USERNAME}";
-       if [ ${CIRCLE_PROJECT_USERNAME} == 'Securing-DevOps' ]; then
-         dr="securingdevops"
-       else
-         dr=$DOCKER_USER
-       fi
+       dr=$DOCKER_USER
        cat >> $BASH_ENV << EOF
        export GOPATH_HEAD="$(echo ${GOPATH}|cut -d ':' -f 1)"
        export GOPATH_BASE="$(echo ${GOPATH}|cut -d ':' -f 1)${gb}"
