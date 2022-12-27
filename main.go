@@ -78,14 +78,7 @@ func main() {
 		http.StripPrefix("/statics/", http.FileServer(http.Dir("./statics"))),
 	).Methods("GET")
 
-	log.Fatal(http.ListenAndServe(":8080",
-		HandleMiddlewares(
-			r,
-			addRequestID(),
-			logRequest(),
-			setResponseHeaders(),
-		),
-	))
+	log.Fatal(http.ListenAndServe(":8080", r))
 }
 
 type Invoice struct {
